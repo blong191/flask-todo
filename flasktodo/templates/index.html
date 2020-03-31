@@ -2,7 +2,11 @@
 
 {% block content %}
   <h1>A simple to-do application</h1>
-
+  <ul>
+    <li><button type="button" name="Completed">Completed Tasks</button></li>
+    <li><button type="button" name="Uncompleted">Uncompleted Tasks</button></li>
+    <li><button type="button" name="All">All Tasks</button></li>
+  </ul>
   <ul>
     {% for todo in todos %}
       <li class="{{ "completed" if todo['completed'] }}">
@@ -15,4 +19,5 @@
     <input type="text" name="description" id="description">
     <input type="submit" value="Add">
   </form>
+
 {% endblock %}
