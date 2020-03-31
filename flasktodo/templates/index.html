@@ -10,8 +10,9 @@
       </li>
     {% endfor %}
   </ul>
-  <form method="post">
-    <label for="todo">Add things to the list!</label>
-    <input type="text" name="Add To List">
+  <form method="POST">
+    <label for="description">Add things to the list!</label>
+    <input type="text" name="description" id="description">
+    <input type="submit" value="Add">
   </form>
 {% endblock %}
