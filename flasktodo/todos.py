@@ -15,10 +15,10 @@ def index():
     print(request.form)
     if request.method == 'POST':
         #Put in additional tasks the user wants
-        description = request.form['description']
-        completed = request.form['completed']
-        uncompleted = request.form['uncompleted']
-        all = request.form['all']
+        description = request.form.get('description')
+        completed = request.form.get('completed')
+        uncompleted = request.form.get('uncompleted')
+        all = request.form.get('all')
         if description != None:
             #Add a new task
             cur.execute(
@@ -29,7 +29,7 @@ def index():
         cur.execute('SELECT * FROM todos')
         if uncompleted != None or completed != None:
             #Checks for which submit was pushed
-            if uncompleted != none:
+            if uncompleted != None:
                 cur.execute('SELECT * FROM todos WHERE completed = FALSE')
 
             else:
