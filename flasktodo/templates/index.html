@@ -2,11 +2,14 @@
 
 {% block content %}
   <h1>A simple to-do application</h1>
-  <ul>
-    <li><button type="button" name="Completed">Completed Tasks</button></li>
-    <li><button type="button" name="Uncompleted">Uncompleted Tasks</button></li>
-    <li><button type="button" name="All">All Tasks</button></li>
-  </ul>
+  <form method="POST" class="which_tasks">
+    <button type="submit" name="completed" value="com">Completed</button>
+  <form method="POST" class="which_tasks">
+    <button type="submit" name="uncompleted" value="uncom">Uncompleted</button>
+  </form>
+  <form method="POST" class="which_tasks">
+    <button type="submit" name="all" value="all">All</button>
+  </form>
   <ul>
     {% for todo in todos %}
       <li class="{{ "completed" if todo['completed'] }}">
@@ -14,7 +17,7 @@
       </li>
     {% endfor %}
   </ul>
-  <form method="POST">
+  <form method="POST" class="new_task">
     <label for="description">Add things to the list!</label>
     <input type="text" name="description" id="description">
     <input type="submit" value="Add">

@@ -11,15 +11,34 @@ def index():
     conn = db.get_db()
     cur = conn.cursor()
 
+    cur.execute('SELECT * FROM todos')
+    print(request.form)
     if request.method == 'POST':
         #Put in additional tasks the user wants
         description = request.form['description']
-        cur.execute(
-        'INSERT INTO todos (description, completed, created_at) VALUES (%s, FALSE, CURRENT_TIMESTAMP)',
-    (description,)
-        )
-        conn.commit()
-    cur.execute('SELECT * FROM todos')
+        completed = request.form['completed']
+        uncompleted = request.form['uncompleted']
+        all = request.form['all']
+        if description != None:
+            #Add a new task
+            cur.execute(
+            'INSERT INTO todos (description, completed, created_at) VALUES (%s, FALSE, CURRENT_TIMESTAMP)',
+            (description,)
+            )
+        #Make sure the new task is reconized by cur
+        cur.execute('SELECT * FROM todos')
+        if uncompleted != None or completed != None:
+            #Checks for which submit was pushed
+            if uncompleted != none:
+                cur.execute('SELECT * FROM todos WHERE completed = FALSE')
+
+            else:
+                cur.execute('SELECT * FROM todos WHERE completed = TRUE')
+
+
+    conn.commit()
+    #if a button(submit) is pressed, show only certain tasks, completed, uncompleted, or all
+
     todos = cur.fetchall()
     cur.close()
 
