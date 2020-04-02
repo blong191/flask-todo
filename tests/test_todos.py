@@ -10,3 +10,10 @@ def test_todo_list(client):
     assert response.data.count(b'<li class="">') == 2
     assert response.data.count(b'<li class="completed">') == 1
 
+def test_new_post(client,):
+    #adds a new task to the page
+    client.post('/', data={'description': 'bigbrain'})
+    #gets the page
+    response = client.get('/')
+    #tests that the new response exists
+    assert b'bigbrain' in response.data

@@ -1,3 +1,4 @@
+import pytest
 from flasktodo import create_app
 
 def test_config(monkeypatch):
@@ -11,4 +12,3 @@ def test_config(monkeypatch):
     monkeypatch.setenv('DATABASE_URL', "pretend this is on heroku...")
     assert "heroku" in create_app().config['DB_URL']
     assert "require" in create_app().config['DB_SSLMODE']
-

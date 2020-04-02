@@ -15,7 +15,7 @@ def index():
     print(request.form)
     if request.method == 'POST':
         #Put in additional tasks the user wants
-        description = request.form.get('description')
+        description = request.form['description']
         completed = request.form.get('completed')
         uncompleted = request.form.get('uncompleted')
         all = request.form.get('all')

@@ -4,6 +4,7 @@ from flasktodo import create_app
 from flasktodo import db
 
 
+
 @pytest.fixture
 def app():
     """Create an app configured for tests."""
@@ -33,4 +34,3 @@ def runner(app):
     """Using test app, create and return a CLI runner object."""
 
     return app.test_cli_runner()
-
